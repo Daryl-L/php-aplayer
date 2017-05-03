@@ -8,7 +8,6 @@
             "email": "daryl.moe@outlook.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.0",
         "metowolf/meting": "dev-master"
