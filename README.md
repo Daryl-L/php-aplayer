@@ -14,6 +14,6 @@ composer require daryl/php-aplayer
 ```
 
 ```php
-$aplayer = new \Daryl\Aplayer();
+$aplayer = new Aplayer\Aplayer();
 $aplayer->out();
 ```

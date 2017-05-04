@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Daryl\\Aplayer\\": "src/"
+            "Aplayer\\": "src/"
         }
     },
     "require-dev": {
