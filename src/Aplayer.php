@@ -1,5 +1,24 @@
 <?php
 
+/*
+ * This file is part of the daryl/php-aplayer.
+ *
+ * (c) daryl <daryl.moe@outlook.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+/**
+ * Aplayer.php.
+ *
+ * @author    daryl <daryl.moe@outlook.com>
+ * @copyright 2017 daryl <daryl.moe@outlook.com
+ *
+ * @see      https://github.com/Daryl-L
+ * @see      https://is.daryl.moe
+ */
+
 namespace Daryl;
 
 use \Metowolf\Meting;
