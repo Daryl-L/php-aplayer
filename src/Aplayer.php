@@ -1,6 +1,6 @@
 <?php
 
-namespace Daryl\Aplayer;
+namespace Daryl;
 
 use \Metowolf\Meting;
 
