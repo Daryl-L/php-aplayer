@@ -5,7 +5,10 @@
 [![Latest Unstable Version](https://poser.pugx.org/daryl/php-aplayer/v/unstable)](https://packagist.org/packages/daryl/php-aplayer)
 [![License](https://poser.pugx.org/daryl/php-aplayer/license)](https://packagist.org/packages/daryl/php-aplayer)
 
-A php package of Aplayer.
+A php package of Aplayer.[](http://aplayer.js.org)
+
+** Only netease music provided now, others is comming soon **
+** Playlist is comming soon **
 
 ## How to use
 
@@ -17,3 +20,20 @@ composer require daryl/php-aplayer
 $aplayer = new Aplayer\Aplayer();
 $aplayer->out();
 ```
+
+## Methods
+
+```php
+Aplayer::setSong($songId); //Id of netease music, default 22817183, one of my favirote music.
+Aplayer::setSongType('song' or 'playlist') //To choose song or playlist. Not provided yet.
+```
+
+Others are the setters of the option which in Aplayer.
+
+## TODO
+[x] netease music
+[] qq music
+[] playlist
+[] multi elements
+
+Just enjoy it!
