@@ -7,8 +7,8 @@
 
 A php package of Aplayer.[](http://aplayer.js.org)
 
-** Only netease music provided now, others is comming soon **
-** Playlist is comming soon **
+**Only netease music provided now, others is comming soon**
+**Playlist is comming soon**
 
 ## How to use
 
@@ -31,9 +31,10 @@ Aplayer::setSongType('song' or 'playlist') //To choose song or playlist. Not pro
 Others are the setters of the option which in Aplayer.
 
 ## TODO
-[x] netease music
-[] qq music
-[] playlist
-[] multi elements
+* [x] netease music
+* [ ] playlist for netease music
+* [ ] multi elements in one page
 
 Just enjoy it!
+
+
