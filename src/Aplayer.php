@@ -85,7 +85,7 @@ class Aplayer
         $this->music         = new Meting($site);
         $this->narrow        = false;
         $this->autoplay      = true;
-        $this->showlrc       = 0;
+        $this->showlrc       = 1;
         $this->mutex         = true;
         $this->theme         = '#e6d0b2';
         $this->mode          = 'random';
