@@ -78,6 +78,11 @@ class Aplayer
     /**
      * @var string
      */
+    protected $playlist;
+
+    /**
+     * @var string
+     */
     protected $songType;
 
     public function __construct($site = 'netease')
@@ -92,38 +97,62 @@ class Aplayer
         $this->preload       = 'metadata';
         $this->listmaxheight = 513;
         $this->song          = '22817183';
+        $this->playlist      = '476998713';
         $this->songType      = 'song';
     }
 
     /**
      * To get the format array of song.
      *
+     * @param int $song
+     *
      * @return array
      */
-    protected function getSongs()
+    protected function getSongs($song)
     {
-        $songs = $this->music->song($this->song);
+        $songs = $this->music->song($song);
         $songs = json_decode($songs, true);
         if (400 == $songs['code']) {
             throw new \Exception($songs['msg']);
         }
 
-        $lyric = $this->music->lyric($this->song);
+        $lyric = $this->music->lyric($song);
         $lyric = json_decode($lyric, true);
 
         $pic = $this->music->pic($songs['songs'][0]['al']['pic']);
         $pic = json_decode($pic, true);
 
-        $url = $this->music->url($this->song);
+        $url = $this->music->url($song);
         $url = json_decode($url, true);
 
         return [
             'title' => $songs['songs'][0]['name'],
             'author' => $songs['songs'][0]['ar'][0]['name'],
-            'lrc' => $lyric['lrc']['lyric'],
+            'lrc' => @$lyric['lrc']['lyric'],
             'pic'  => $pic['url'],
             'url' => $url['data'][0]['url'],
         ];
+    }
+
+    /**
+     * To get the format array of playlist.
+     *
+     * @return array
+     */
+    protected function getPlaylist()
+    {
+        $playlist = $this->music->playlist($this->playlist);
+        $songs = json_decode($playlist, true);
+        if (400 == $songs['code']) {
+            throw new \Exception($songs['msg']);
+        }
+
+        $res = [];
+        foreach ($songs['playlist']['tracks'] as $key => $song) {
+            $res[] = $this->getSongs($song['id']);
+        }
+
+        return $res;
     }
 
     /**
@@ -131,6 +160,20 @@ class Aplayer
      */
     public function out()
     {
+        if ('song' == $this->songType) {
+            try {
+                $songs = $this->getSongs($this->song);
+            } catch (Exception $e) {
+                exit($e->getMessage());
+            }
+        } elseif ('playlist' == $this->songType) {
+            try {
+                $songs = $this->getPlaylist($this->song);
+            } catch (Exception $e) {
+                exit($e->getMessage());
+            }
+        }
+
         $options = [
             'element'       => 'document.getElementById(\'player1\')',
             'narrow'        => $this->narrow,
@@ -140,7 +183,7 @@ class Aplayer
             'mode'          => $this->mode,
             'preload'       => $this->preload,
             'listmaxheight' => $this->listmaxheight . 'px',
-            'music'         => $this->getSongs(),
+            'music'         => $songs,
         ];
         $str = str_replace(
             '"document.getElementById(\'player1\')"', 
@@ -157,17 +200,31 @@ class Aplayer
     }
 
     /**
-     * To set a song id or a playlist id.
+     * To set a song id.
      *
      * @param string $song
      */
     public function setSong($song = '22817204')
     {
         if (!is_numeric($song)) {
-            throw new \Exception('Invalid id of song or playlist.');
+            throw new \Exception('Invalid id of song.');
         }
 
         $this->song = $song;
+    }
+
+    /**
+     * To set a playlist id.
+     *
+     * @param string $playlist
+     */
+    public function setPlaylist($playlist = '476998713')
+    {
+        if (!is_numeric($playlist)) {
+            throw new \Exception('Invalid id of playlist.');
+        }
+
+        $this->playlist = $playlist;
     }
 
     /**

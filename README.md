@@ -7,7 +7,10 @@
 
 A php package of Aplayer.[](http://aplayer.js.org)
 
+And thank @metowolf with his [Meting](https://github.com/metowolf/Meting)
+
 **Only netease music provided now, others is comming soon**
+
 **Playlist is comming soon**
 
 ## How to use
@@ -24,15 +27,16 @@ $aplayer->out();
 ## Methods
 
 ```php
-Aplayer::setSong($songId); //Id of netease music, default 22817183, one of my favirote music.
-Aplayer::setSongType('song' or 'playlist') //To choose song or playlist. Not provided yet.
+Aplayer::setSong($songId); //Id of the netease music, default 22817183, one of my favirote music.
+Aplayer::setPlaylist($playlistId); //Id of the netease music, default 476998713, one of my favirote playlist.
+Aplayer::setSongType('song' or 'playlist') //To choose song or playlist.
 ```
 
 Others are the setters of the option which in Aplayer.
 
 ## TODO
 * [x] netease music
-* [ ] playlist for netease music
+* [x] playlist for netease music
 * [ ] multi elements in one page
 
 Just enjoy it!
