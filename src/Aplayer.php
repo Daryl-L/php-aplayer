@@ -85,6 +85,11 @@ class Aplayer
      */
     protected $songType;
 
+    /**
+     * @var string
+     */
+    protected $elementId;
+
     public function __construct($site = 'netease')
     {
         $this->music         = new Meting($site);
@@ -99,6 +104,7 @@ class Aplayer
         $this->song          = '22817183';
         $this->playlist      = '476998713';
         $this->songType      = 'song';
+        $this->elementId     = 'player1';
     }
 
     /**
@@ -175,7 +181,7 @@ class Aplayer
         }
 
         $options = [
-            'element'       => 'document.getElementById(\'player1\')',
+            'element'       => 'document.getElementById(\'' . $this->elementId . '\')',
             'narrow'        => $this->narrow,
             'showlrc'       => $this->showlrc,
             'mutex'         => $this->mutex,
@@ -186,11 +192,11 @@ class Aplayer
             'music'         => $songs,
         ];
         $str = str_replace(
-            '"document.getElementById(\'player1\')"', 
-            'document.getElementById(\'player1\')', 
+            '"document.getElementById(\'' . $this->elementId . '\')"', 
+            'document.getElementById(\'' . $this->elementId . '\')', 
             json_encode($options, JSON_UNESCAPED_SLASHES)
         );
-        $src = '<div id="player1" class="aplayer"></div>';
+        $src = '<div id="' . $this->elementId . '" class="aplayer"></div>';
         $src .= '<script src="//cdn.bootcss.com/aplayer/1.6.0/APlayer.min.js"></script>';
         $src .= '<script>';
         $src .= 'var ap=new APlayer('. $str . ');';
@@ -341,5 +347,15 @@ class Aplayer
         } else {
             throw new \Exception('Invalid value for song type.');
         }
+    }
+
+    /**
+     * Set the id of the element which aplayer displays on.
+     *
+     * @param string $elementId
+     */
+    public function setElementId($elementId)
+    {
+        $this->elementId = $elementId;
     }
 }

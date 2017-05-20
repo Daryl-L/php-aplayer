@@ -30,6 +30,7 @@ $aplayer->out();
 Aplayer::setSong($songId); //Id of the netease music, default 22817183, one of my favirote music.
 Aplayer::setPlaylist($playlistId); //Id of the netease music, default 476998713, one of my favirote playlist.
 Aplayer::setSongType('song' or 'playlist') //To choose song or playlist.
+Aplayer::setElementId($elementId) //To set the id of the aplayer element, default player1.
 ```
 
 Others are the setters of the option which in Aplayer.
