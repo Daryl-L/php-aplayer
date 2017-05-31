@@ -5,13 +5,11 @@
 [![Latest Unstable Version](https://poser.pugx.org/daryl/php-aplayer/v/unstable)](https://packagist.org/packages/daryl/php-aplayer)
 [![License](https://poser.pugx.org/daryl/php-aplayer/license)](https://packagist.org/packages/daryl/php-aplayer)
 
-A php package of Aplayer.[http://aplayer.js.org](http://aplayer.js.org)
+A php package for Aplayer.[http://aplayer.js.org](http://aplayer.js.org)
 
 And thank @metowolf with his [Meting](https://github.com/metowolf/Meting)
 
 **Only netease music provided now, others is comming soon**
-
-**Playlist is comming soon**
 
 ## How to use
 
